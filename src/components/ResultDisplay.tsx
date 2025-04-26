@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -113,8 +112,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, isLoading, onRese
             </div>
             <Progress 
               value={result.data.fraud_score} 
-              className="h-2" 
-              indicatorClassName={getProgressColor(result.data.fraud_score)}
+              className={`h-2 [&>div]:${getProgressColor(result.data.fraud_score)}`}
             />
             
             <div className="mt-4">
