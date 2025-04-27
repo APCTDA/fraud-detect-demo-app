@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -6,6 +7,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { ApiResponse, AnalysisDetail } from '@/types';
 import { AlertTriangle, Check, X, Shield } from 'lucide-react';
 import { toast } from 'sonner';
+import { verifyTransaction } from '@/services/api';
 
 interface ResultDisplayProps {
   result: ApiResponse | null;
@@ -69,15 +71,42 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, isLoading, onRese
   }
 
   // Handle verification actions
-  const handleVerify = (isLegitimate: boolean) => {
-    if (isLegitimate) {
-      toast.success("Transaction marked as legitimate");
-    } else {
-      toast.error("Transaction marked as fraudulent");
-    }
+  const handleVerify = async (isLegitimate: boolean) => {
+    if (!result) return;
     
-    // Reset the form after verification
-    setTimeout(onReset, 1500);
+    try {
+      // Extract transaction_id from the response
+      const transactionId = result?.data?.transaction_id;
+      if (!transactionId) {
+        throw new Error('Transaction ID not found');
+      }
+
+      // Show loading toast
+      const loadingToast = toast.loading("Verifying transaction...");
+      
+      // Call verify API
+      await verifyTransaction({
+        user_id: "user_1", // Using default user_id as per the example
+        transaction_id: transactionId,
+        is_legitimate: isLegitimate
+      });
+      
+      // Dismiss loading toast
+      toast.dismiss(loadingToast);
+      
+      // Show success message
+      if (isLegitimate) {
+        toast.success("Transaction marked as legitimate");
+      } else {
+        toast.error("Transaction marked as fraudulent");
+      }
+      
+      // Reset the form after verification
+      setTimeout(onReset, 1500);
+    } catch (error) {
+      toast.error("Failed to verify transaction");
+      console.error('Error verifying transaction:', error);
+    }
   };
 
   // Group analysis details by source
@@ -250,3 +279,4 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, isLoading, onRese
 };
 
 export default ResultDisplay;
+
