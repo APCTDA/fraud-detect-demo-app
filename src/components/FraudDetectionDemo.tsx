@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -9,6 +8,7 @@ import JsonEditor from './JsonEditor';
 import ResultDisplay from './ResultDisplay';
 import { TransactionRequest, defaultTransaction, ApiResponse } from '@/types';
 import { AlertTriangle, Shield } from 'lucide-react';
+import { analyzeFraudTransaction } from '@/services/api';
 
 const FraudDetectionDemo = () => {
   const [transaction, setTransaction] = useState<TransactionRequest>(defaultTransaction);
@@ -22,166 +22,8 @@ const FraudDetectionDemo = () => {
       // Show loading toast
       const loadingToast = toast.loading("Analyzing transaction...");
       
-      // For the demo, we'll simulate an API call
-      const simulateApiCall = async () => {
-        // Simulate network delay
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        // This is the sample response from your provided data
-        const mockResponse: ApiResponse = {
-          data: {
-            alert: {
-              details: {
-                ai_analysis: {
-                  details: "Transaction conducted from an unrecognized device and location with a high transaction amount.",
-                  is_alert: true,
-                  message: "Potential fraud activity detected.",
-                  suggestions: "Consider blocking this transaction until further verification."
-                },
-                traditional_analysis: {
-                  details: "New location: USA has never appeared in history, New IP: 45.67.89.123 has never appeared in history, Amount (1000000) is higher than normal threshold (300000.00), New product category: Entertainment, New device: mobile-ios-1",
-                  is_alert: true,
-                  message: "Suspicious transaction detected",
-                  suggestions: "Verify transaction with user"
-                }
-              },
-              is_alert: true,
-              message: "Suspicious transaction detected by multiple methods",
-              suggestions: "Verify transaction with user and consider additional security measures"
-            },
-            analysis_details: [
-              {
-                fraud_score: 90,
-                message: "Transaction amount exceeds normal thresholds for this account.",
-                source: "ai",
-                type: "amount_check"
-              },
-              {
-                fraud_score: 90.0,
-                message: "Amount (1000000) is higher than normal threshold (300000.00)",
-                source: "traditional",
-                type: "amount"
-              },
-              {
-                fraud_score: 80,
-                message: "Transaction from an unusual geographic location.",
-                source: "ai",
-                type: "location_check"
-              },
-              {
-                fraud_score: 70,
-                message: "Transaction initiated from a new device.",
-                source: "ai",
-                type: "device_check"
-              },
-              {
-                fraud_score: 70.0,
-                message: "New location: USA has never appeared in history",
-                source: "traditional",
-                type: "geolocation"
-              },
-              {
-                fraud_score: 70.0,
-                message: "New IP: 45.67.89.123 has never appeared in history",
-                source: "traditional",
-                type: "ip_address"
-              },
-              {
-                fraud_score: 60.0,
-                message: "New device: mobile-ios-1",
-                source: "traditional",
-                type: "device"
-              },
-              {
-                fraud_score: 50.0,
-                message: "New product category: Entertainment",
-                source: "traditional",
-                type: "category"
-              },
-              {
-                fraud_score: 50.0,
-                message: "Machine learning model detected potential fraud",
-                source: "traditional",
-                type: "ml_model"
-              }
-            ],
-            fraud_score: 84.0,
-            is_suspicious: true,
-            reasons: [
-              "New IP: 45.67.89.123 has never appeared in history",
-              "Amount (1000000) is higher than normal threshold (300000.00)",
-              "New product category: Entertainment",
-              "New device: mobile-ios-1",
-              "Transaction from an unusual geographic location.",
-              "New location: USA has never appeared in history",
-              "Transaction amount exceeds normal thresholds for this account.",
-              "Transaction initiated from a new device.",
-              "Transaction amount is significantly high and from an unusual location and device."
-            ],
-            suggestions: "Contact user for confirmation and verify the legitimacy of the transaction."
-          },
-          status: "success"
-        };
-        
-        // Dynamically update some fields based on the input
-        mockResponse.data.analysis_details = mockResponse.data.analysis_details.map(detail => {
-          if (detail.type === 'amount' || detail.type === 'amount_check') {
-            return {
-              ...detail,
-              message: detail.message.replace('1000000', transaction.amount.toString())
-            };
-          }
-          if (detail.type === 'geolocation' || detail.type === 'location_check') {
-            return {
-              ...detail,
-              message: detail.message.replace('USA', transaction.geolocation)
-            };
-          }
-          if (detail.type === 'device' || detail.type === 'device_check') {
-            return {
-              ...detail,
-              message: detail.message.replace('mobile-ios-1', transaction.device_id)
-            };
-          }
-          if (detail.type === 'ip_address') {
-            return {
-              ...detail,
-              message: detail.message.replace('45.67.89.123', transaction.ip_address)
-            };
-          }
-          if (detail.type === 'category') {
-            return {
-              ...detail,
-              message: detail.message.replace('Entertainment', transaction.category)
-            };
-          }
-          return detail;
-        });
-        
-        // Update traditional analysis details
-        mockResponse.data.alert.details.traditional_analysis.details = 
-          mockResponse.data.alert.details.traditional_analysis.details
-            .replace('USA', transaction.geolocation)
-            .replace('45.67.89.123', transaction.ip_address)
-            .replace('1000000', transaction.amount.toString())
-            .replace('Entertainment', transaction.category)
-            .replace('mobile-ios-1', transaction.device_id);
-            
-        // Update reasons array
-        mockResponse.data.reasons = mockResponse.data.reasons.map(reason => {
-          return reason
-            .replace('45.67.89.123', transaction.ip_address)
-            .replace('1000000', transaction.amount.toString())
-            .replace('Entertainment', transaction.category)
-            .replace('mobile-ios-1', transaction.device_id)
-            .replace('USA', transaction.geolocation);
-        });
-        
-        return mockResponse;
-      };
-      
-      // Simulate fetching data from the API
-      const response = await simulateApiCall();
+      // Call the API
+      const response = await analyzeFraudTransaction(transaction);
       
       // Dismiss loading toast
       toast.dismiss(loadingToast);
