@@ -22,7 +22,7 @@ const Hero = () => {
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">
           <div className="inline-block rounded-lg bg-muted px-3 py-1 text-sm">
-            Advanced Fraud Detection System
+            AI-powered cheating transaction detect assistant System
           </div>
           
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tighter">
@@ -37,9 +37,6 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 min-[400px]:gap-2">
             <Button onClick={scrollToDemo} size="lg" className="bg-fraud-purple hover:bg-fraud-purple/90">
               Try Demo
-            </Button>
-            <Button variant="outline" size="lg">
-              Learn More
             </Button>
           </div>
           

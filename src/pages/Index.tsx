@@ -19,11 +19,11 @@ const Index = () => {
             <div className="mb-4 md:mb-0">
               <h3 className="text-lg font-semibold">FraudShield</h3>
               <p className="text-sm text-muted-foreground">
-                Advanced Fraud Detection System
+                Advanced Fraud Detection System - by CHENGONG team
               </p>
             </div>
             <p className="text-sm text-muted-foreground">
-              © 2025 FraudShield. All rights reserved.
+              © 2025 FraudShield. By CHENGONG team
             </p>
           </div>
         </div>
