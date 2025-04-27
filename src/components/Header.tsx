@@ -19,9 +19,6 @@ const Header = () => {
           <a href="#demo" className="text-sm font-medium transition-colors hover:text-fraud-purple">
             Demo
           </a>
-          <a href="#about" className="text-sm font-medium transition-colors hover:text-fraud-purple">
-            About
-          </a>
         </nav>
         
         <div className="flex items-center gap-2">

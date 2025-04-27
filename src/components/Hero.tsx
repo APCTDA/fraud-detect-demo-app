@@ -12,7 +12,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative overflow-hidden py-20 md:py-28 lg:py-32">
+    <section  id="hero"  className="relative overflow-hidden py-20 md:py-28 lg:py-32">
       {/* Background decorations */}
       <div className="absolute inset-0 -z-10">
         <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 rounded-full w-96 h-96 bg-fraud-purple/10 blur-3xl" />
