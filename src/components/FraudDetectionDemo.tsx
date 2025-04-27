@@ -112,8 +112,9 @@ const FraudDetectionDemo = () => {
           
           <div>
             <ResultDisplay 
-              result={result} 
-              isLoading={isLoading} 
+              userId={transaction.user_id}
+              result={result}
+              isLoading={isLoading}
               onReset={handleReset}
             />
           </div>

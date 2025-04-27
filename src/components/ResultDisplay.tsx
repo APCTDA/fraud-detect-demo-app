@@ -10,6 +10,7 @@ import { toast } from 'sonner';
 import { verifyTransaction } from '@/services/api';
 
 interface ResultDisplayProps {
+  userId: string | null;
   result: ApiResponse | null;
   isLoading: boolean;
   onReset: () => void;
@@ -36,7 +37,7 @@ const getProgressColor = (score: number) => {
   return 'bg-fraud-high';
 };
 
-const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, isLoading, onReset }) => {
+const ResultDisplay: React.FC<ResultDisplayProps> = ({ userId,result, isLoading, onReset }) => {
   // If loading or no result, show appropriate content
   if (isLoading) {
     return (
@@ -86,7 +87,7 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, isLoading, onRese
       
       // Call verify API
       await verifyTransaction({
-        user_id: "user_1", // Using default user_id as per the example
+        user_id: userId, // Using default user_id as per the example
         transaction_id: transactionId,
         is_legitimate: isLegitimate
       });
