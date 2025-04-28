@@ -31,13 +31,11 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
 
   // Predefined locations
   const commonLocations = [
-    'United States',
+    'USA',
     'Vietnam',
-    'United Kingdom',
     'Japan',
     'Singapore',
-    'China',
-    'South Korea'
+    'Taiwan'
   ];
 
   // Categories for the dropdown
