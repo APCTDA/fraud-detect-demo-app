@@ -1,9 +1,16 @@
-
 import React from 'react';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { TransactionRequest } from '@/types';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Globe } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 interface TransactionFormProps {
   transaction: TransactionRequest;
@@ -21,6 +28,17 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
       [field]: value,
     });
   };
+
+  // Predefined locations
+  const commonLocations = [
+    'United States',
+    'Vietnam',
+    'United Kingdom',
+    'Japan',
+    'Singapore',
+    'China',
+    'South Korea'
+  ];
 
   // Categories for the dropdown
   const categories = [
@@ -87,11 +105,31 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
 
       <div className="space-y-2">
         <Label htmlFor="geolocation">Geolocation</Label>
-        <Input
-          id="geolocation"
-          value={transaction.geolocation}
-          onChange={(e) => handleChange('geolocation', e.target.value)}
-        />
+        <div className="flex gap-2">
+          <Input
+            id="geolocation"
+            value={transaction.geolocation}
+            onChange={(e) => handleChange('geolocation', e.target.value)}
+            className="flex-1"
+          />
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline" size="icon">
+                <Globe className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-[200px]">
+              {commonLocations.map((location) => (
+                <DropdownMenuItem
+                  key={location}
+                  onClick={() => handleChange('geolocation', location)}
+                >
+                  {location}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
       </div>
 
       <div className="space-y-2">
