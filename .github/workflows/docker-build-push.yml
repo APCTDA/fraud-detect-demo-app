@@ -9,6 +9,7 @@ on:
 env:
   REGISTRY: docker.io
   IMAGE_NAME: ${{ github.repository }}
+  DOCKER_HUB: lethanh9398
 
 jobs:
   build-and-push:
@@ -31,7 +32,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: ${{ env.DOCKER_HUB }}/${{ env.IMAGE_NAME }}
           tags: |
             type=raw,value=latest
             type=sha,format=long
