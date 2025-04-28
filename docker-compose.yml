@@ -1,0 +1,19 @@
+
+version: '3.3'
+
+services:
+  nginx:
+    build: .
+    container_name: nginx-app
+    deploy:
+      resources:
+        limits:
+          cpus: "1"
+          memory: 700m
+        reservations:
+          cpus: "1"
+          memory: 400M
+    restart: always
+    ports:
+      - "80:80"
+
