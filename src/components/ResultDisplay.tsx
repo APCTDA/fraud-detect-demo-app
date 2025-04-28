@@ -77,7 +77,6 @@ const ResultDisplay: React.FC<ResultDisplayProps> = ({ userId,result, isLoading,
     
     try {
       // Extract transaction_id from the response
-
       const transactionId = result?.transaction_id;
       if (!transactionId) {
         throw new Error('Transaction ID not found');
