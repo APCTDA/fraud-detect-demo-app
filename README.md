@@ -1,73 +1,86 @@
-# Welcome to your Lovable project
+# Fraud Detection Demo App
 
-## Project info
+## Team CHENGONG
 
-**URL**: https://lovable.dev/projects/d2a4360e-b385-43e1-b18a-092352d589b6
+This is a demo application for fraud detection, developed by Team CHENGONG.
 
-## How can I edit this code?
+## Project Overview
 
-There are several ways of editing your application.
+This application demonstrates a modern fraud detection system built with cutting-edge technologies. It provides a user-friendly interface for analyzing and detecting potential fraudulent activities.
 
-**Use Lovable**
+## Technologies Used
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/d2a4360e-b385-43e1-b18a-092352d589b6) and start prompting.
+- **Frontend Framework**: React with TypeScript
+- **Build Tool**: Vite
+- **UI Components**: shadcn-ui
+- **Styling**: Tailwind CSS
+- **Development**: Node.js & npm
 
-Changes made via Lovable will be committed automatically to this repo.
+## Getting Started
 
-**Use your preferred IDE**
+### Prerequisites
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+- Node.js (recommended to install using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+- npm
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Installation
 
-Follow these steps:
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd fraud-detect-demo-app
+```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+2. Install dependencies:
+```bash
+npm install
+```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:5173` by default.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Development
 
-**Use GitHub Codespaces**
+### Project Structure
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- `/src`: Contains all source code
+- `/public`: Static assets
+- `/components`: Reusable UI components
+- `/pages`: Application pages
+- `/utils`: Utility functions and helpers
 
-## What technologies are used for this project?
+### Available Scripts
 
-This project is built with:
+- `npm run dev`: Start development server
+- `npm run build`: Build for production
+- `npm run preview`: Preview production build
+- `npm run lint`: Run ESLint
+- `npm run type-check`: Run TypeScript type checking
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deployment
 
-## How can I deploy this project?
+The application can be deployed using various methods:
 
-Simply open [Lovable](https://lovable.dev/projects/d2a4360e-b385-43e1-b18a-092352d589b6) and click on Share -> Publish.
+1. **Vercel**: Recommended for easy deployment
+2. **Netlify**: Alternative deployment platform
+3. **Traditional hosting**: Build and deploy the static files
 
-## Can I connect a custom domain to my Lovable project?
+## Contributing
 
-Yes, you can!
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## License
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+This project is proprietary and confidential. All rights reserved by Team CHENGONG.
+
+## Contact
+
+For any inquiries or support, please contact the CHENGONG team.
