@@ -15,6 +15,7 @@ This application demonstrates a modern fraud detection system built with cutting
 - **UI Components**: shadcn-ui
 - **Styling**: Tailwind CSS
 - **Development**: Node.js & npm
+- **Containerization**: Docker
 
 ## Getting Started
 
@@ -22,6 +23,7 @@ This application demonstrates a modern fraud detection system built with cutting
 
 - Node.js (recommended to install using [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
 - npm
+- Docker (optional, for containerized deployment)
 
 ### Installation
 
@@ -43,6 +45,22 @@ npm run dev
 
 The application will be available at `http://localhost:5173` by default.
 
+### Docker Deployment
+
+The application can be deployed using Docker:
+
+1. Build the Docker image:
+```bash
+docker build -t fraud-detect-demo-app .
+```
+
+2. Run the container:
+```bash
+docker run -p 80:80 fraud-detect-demo-app
+```
+
+The application will be available at `http://localhost:80`
+
 ## Development
 
 ### Project Structure
@@ -60,6 +78,22 @@ The application will be available at `http://localhost:5173` by default.
 - `npm run preview`: Preview production build
 - `npm run lint`: Run ESLint
 - `npm run type-check`: Run TypeScript type checking
+
+## Continuous Integration/Deployment
+
+This project uses GitHub Actions for CI/CD:
+
+- Automatic Docker image builds on push to main branch
+- Images are pushed to Docker Hub
+- Build cache optimization for faster builds
+
+To set up the CI/CD pipeline:
+
+1. Add the following secrets to your GitHub repository:
+   - `DOCKERHUB_USERNAME`: Your Docker Hub username
+   - `DOCKERHUB_TOKEN`: Your Docker Hub access token
+
+2. The workflow will automatically build and push images on each push to the main branch.
 
 ## Deployment
 
