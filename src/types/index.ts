@@ -20,7 +20,7 @@ export const defaultTransaction: TransactionRequest = {
   currency: "VND",
   description: "Buy ticket",
   category: "Entertainment",
-  timestamp: "2024-03-20T10:00:00",
+  timestamp: new Date().toISOString(),
   geolocation: "vietnam",
   device_id: "mobile-ios-1"
 };
