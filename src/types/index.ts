@@ -15,13 +15,13 @@ export interface TransactionRequest {
 // Default transaction for initial state
 export const defaultTransaction: TransactionRequest = {
   user_id: "user_1",
-  amount: 1000000,
-  ip_address: "45.67.89.123",
+  amount: 100000,
+  ip_address: "203.160.89.123",
   currency: "VND",
   description: "Buy ticket",
   category: "Entertainment",
   timestamp: "2024-03-20T10:00:00",
-  geolocation: "USA",
+  geolocation: "vietnam",
   device_id: "mobile-ios-1"
 };
 
