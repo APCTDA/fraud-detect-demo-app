@@ -27,11 +27,11 @@ export const defaultTransaction: TransactionRequest = {
   amount: 100000,
   ip_address: "203.160.89.123",
   currency: "VND",
-  description: "Buy ticket",
-  category: "Entertainment",
+  description: "Supermarket payment",
+  category: "shopping",
   timestamp: getLocalISOString(),
   geolocation: "Vietnam",
-  device_id: "mobile-ios-1"
+  device_id: "mobile-ios"
 };
 
 // Analysis detail from response
