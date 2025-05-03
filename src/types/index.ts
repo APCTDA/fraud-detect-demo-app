@@ -31,7 +31,7 @@ export const defaultTransaction: TransactionRequest = {
   category: "shopping",
   timestamp: getLocalISOString(),
   geolocation: "Vietnam",
-  device_id: "mobile-ios"
+  device_id: "mobile-ios-1"
 };
 
 // Analysis detail from response
