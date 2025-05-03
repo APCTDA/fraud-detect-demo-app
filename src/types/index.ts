@@ -30,7 +30,7 @@ export const defaultTransaction: TransactionRequest = {
   description: "Buy ticket",
   category: "Entertainment",
   timestamp: getLocalISOString(),
-  geolocation: "vietnam",
+  geolocation: "Vietnam",
   device_id: "mobile-ios-1"
 };
 

@@ -40,17 +40,20 @@ const TransactionForm: React.FC<TransactionFormProps> = ({
 
   // Categories for the dropdown
   const categories = [
-    'Entertainment',
-    'Food',
-    'Travel',
-    'Shopping',
-    'Electronics',
-    'Healthcare',
-    'Education',
+    'entertainment',
+    'luxury',
+    'travel',
+    'investment',
+    'gambling',
+    'services',
+    'shopping',
+    'food',
+    'transportation',
+    'health',
   ];
 
   // Currencies for the dropdown
-  const currencies = ['VND', 'USD', 'EUR', 'GBP', 'JPY'];
+  const currencies = ['VND', 'TWD', 'USD', 'EUR', 'JPY'];
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
