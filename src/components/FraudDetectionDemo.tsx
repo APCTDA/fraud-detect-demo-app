@@ -103,7 +103,7 @@ const FraudDetectionDemo = () => {
                     className="bg-fraud-purple hover:bg-fraud-purple/90"
                     disabled={isLoading}
                   >
-                    {isLoading ? 'Analyzing...' : 'Analyze Transaction'}
+                    {isLoading ? 'Analyzing...' : 'Make Transaction'}
                   </Button>
                 </div>
               </CardContent>
